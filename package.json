@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "ts-node-dev --respawn --ignore-watch node_modules --no-notify ./app.ts"
   },
   "keywords": [],
   "author": "",
@@ -21,5 +22,8 @@
     "husky": "^7.0.1",
     "lint-staged": "^11.1.2",
     "typescript": "^4.3.5"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
   }
 }
