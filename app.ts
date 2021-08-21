@@ -1,12 +1,17 @@
 import express from 'express'
-import { launchRoutes } from './routes/launch.routes'
+import { launchController } from './controllers/launch.controller'
+import * as dotenv from 'dotenv'
+import cors from 'cors'
 
+dotenv.config()
 const app = express()
 
 app.use(express.json())
 
-app.use('/', launchRoutes)
+app.use(cors())
 
-app.listen(4000, () => {
-  console.log('listening on 4000')
+app.use('/', launchController)
+
+app.listen(Number(process.env.PORT), () => {
+  console.log(`listening on PORT ${process.env.PORT}`)
 })
