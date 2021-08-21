@@ -13,5 +13,5 @@ app.use(cors())
 app.use('/', launchController)
 
 app.listen(Number(process.env.PORT), () => {
-  console.log(`listening on PORT ${process.env.PORT}`)
+  console.log(`listening on PORT ${Number(process.env.PORT)}`)
 })
