@@ -8,7 +8,7 @@ Tecnologias usadas:
 - Node.js
 - Luxon
 - Express
-- Axion
+- Axios
 
 ## Instalação
 
