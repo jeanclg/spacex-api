@@ -10,7 +10,7 @@ launchController.get('/upcoming-launches', async (req: Request, res: Response) =
   try {
     const url = 'https://lldev.thespacedevs.com/2.2.0/launch/upcoming/?include_suborbital=true&lsp__name=spacex'
     const response = await axios.get(url)
-    const result: [LaunchInterface] = response.data.results.map((launch: any) => {
+    const launches: LaunchInterface[] = response.data.results.map((launch: any) => {
       const dateLaunch = DateTime.fromISO(launch.window_start)
       const dateLimit = DateTime.now().plus({ months: MONTHS })
       if (dateLaunch < dateLimit && DateTime.now() < dateLaunch) {
@@ -22,10 +22,12 @@ launchController.get('/upcoming-launches', async (req: Request, res: Response) =
           window_start: dateLaunch.setLocale('pt').toLocaleString(DateTime.DATE_SHORT)
         }
       }
+      return undefined
     }).filter((x: any) => {
       return x !== undefined
     })
-    return res.status(200).json({ launches: result })
+    console.log(launches)
+    return res.status(200).json({ launches })
   } catch (e) {
     return res.status(500).json({ msg: `Internal Server Error - ${e}` })
   }
