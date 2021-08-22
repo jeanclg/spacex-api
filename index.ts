@@ -13,5 +13,5 @@ app.use(cors({ origin: process.env.REACT_APP_URL }))
 app.use('/', launchController)
 
 app.listen(Number(process.env.PORT), () => {
-  console.log(`listening on PORT ${Number(process.env.PORT)}`)
+  console.log(`listening on PORT ${Number(process.env.PORT) || 4000}`)
 })
